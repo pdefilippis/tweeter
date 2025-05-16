@@ -1,0 +1,18 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TweetService";
+
+package tweet;
+
+service Publication {
+	rpc SaveMessage(MessageRequest) returns (MessageResponse);
+}
+
+message MessageRequest {
+	int32 userId = 1;
+	string message = 2;
+}
+
+message MessageResponse {
+	bool success = 1;
+}

@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TimelineService";
+
+package timeline;
+
+service TweetsTimeline {
+	rpc GetTweets(FilterTweetsRequest) returns (TweetsHeaderFilteredResponse);
+}
+
+message FilterTweetsRequest {
+	int32 userId = 1;
+	int32 page = 2;
+	int32 pageSize = 3;
+}
+
+message TweetsHeaderFilteredResponse {
+	int32 userId = 1;
+	int32 currentPage = 2;
+	bool hasNextPage = 3;
+	int32 pageSize = 4;
+	repeated TweetsFilteredResponse Tweets = 5;
+}
+
+message TweetsFilteredResponse {
+	int32 userId = 1;
+	string message = 2;
+}

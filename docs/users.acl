@@ -1,0 +1,15 @@
+# Archivo de Configuración de Usuarios para Redis (users.acl)
+
+# Cambia 'tu_usuario' y 'TuPasswordSeguro' por tus credenciales deseadas.
+# 'on' habilita el usuario.
+# '>TuPasswordSeguro' especifica la contraseña en texto plano. Redis la manejará internamente.
+# '~*' permite al usuario acceder a todas las claves (keyspace).
+# '+@all' otorga todos los permisos de comandos.
+# Para producción, es recomendable restringir los permisos a lo estrictamente necesario.
+# Ejemplo: user tu_usuario on >TuPasswordSeguro ~* +get +set +del +ping
+user guest on >guest ~* +@all
+
+# Opcional: Deshabilitar el usuario 'default' para mayor seguridad.
+# El usuario 'default' existe por defecto sin contraseña y con todos los permisos si no se especifica --requirepass o ACLs.
+# Si estás usando ACLs, es una buena práctica gestionarlo explícitamente.
+# user default off -@all
